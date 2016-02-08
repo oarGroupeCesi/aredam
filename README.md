@@ -27,6 +27,14 @@ Projet MADERA
 npm install ios-sim -g
 ```
 
+## Création du projet
+```
+cordova create hello com.example.hello HelloWorld
+> - hello : représente le nom du répertoire créé pour le projet
+> - com.example.hello : (optionnel) fournit au projet un nom de domaine de style inverse
+> - HelloWorld : représente le nom/titre de l'application
+```
+
 ## Initialisation des plateformes
 
 ```
