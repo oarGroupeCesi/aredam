@@ -1,0 +1,13 @@
+# Ignoring platforms' specific resources used
+# when building
+platforms
+
+# Ignoring plugins
+plugins
+bower_components
+
+.idea/
+
+# Ignore dist directory binaries
+dist/*.ipa
+dist/*.apk
