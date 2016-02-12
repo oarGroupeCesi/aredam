@@ -1,57 +1,85 @@
+/**
+ * GLOBAL
+ * -----------------------------------------------------------------------------
+ */
+* {
+    box-sizing: border-box;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */ 
+}
+html {
+    font-size: 16px;
+}
 body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#32383d;
-    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size:12px;
+    background: #26A65B; 
+    color: #41464c;
+    font-family: 'quicksand', sans-serif;
+    font-size: 100%;
+    font-weight: normal;
+    height: 100%;
+    letter-spacing: -1px;
+    line-height: 1.4;
+    overflow-x: hidden;
+    width: 100%;
+    /**/
+    -webkit-font-smoothing: antialiased;
 }
 
-.app {
-    background: url(../images/cordova.png) no-repeat center top; 
-    background-size: contain;
-    position: absolute;             
-    left: 50%;
-    top: 50%;
-    height: 30px;                  
-    width: 250px;                   
-    text-align: center;
-    padding: 200px 0px 0px 0px;     
-    margin: -125px;
+/**
+ * TEXT SELECT
+ * -----------------------------------------------------------------------------
+ */
+::-moz-selection {
+    background: #56c3da;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #56c3da;
+    color: #fff;
+    text-shadow: none;
+}
+::-moz-selection {
+    background: #56c3da;
+    color: #fff;
+    text-shadow: none;
 }
 
-.event {
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    color: #FFFFFF;
-    margin: 27px;
-    padding: 4px 0px;
-    text-transform: uppercase;
-    background-color: #696969;
-    animation: fade 3000ms infinite;
-    -webkit-animation: fade 3000ms infinite;
+/**
+ * CLEARFIX
+ * -----------------------------------------------------------------------------
+ */
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
 }
 
-.ready {
-    background-color: #4B946A;
+/**
+ * NAVBAR
+ * -----------------------------------------------------------------------------
+ */
+.custom-navbar .navbar-toggle {
+    float: left;
+    margin-left: 15px;
+    margin-right: 0;
 }
-
-@keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
-
-/* Portrait styles */
-@media screen and (orientation: portrait) {
-}
-
-/* Landscape styles */
-@media screen and (orientation: landscape) {
+.custom-navbar .navbar-brand img {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 20px;
 }

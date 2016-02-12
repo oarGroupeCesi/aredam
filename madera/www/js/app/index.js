@@ -45,14 +45,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    },
-
-    onPause: function () {
-        // TODO: This application has been suspended. Save application state here.
-    },
-
-    onResume: function () {
-        // TODO: This application has been reactivated. Restore application state here.
     }
 };
 
