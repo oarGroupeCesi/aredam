@@ -10,7 +10,9 @@ require.config({
         "text": "../vendor/require/plugins/text/text",
         "baseLayoutView" : "/js/app/views/baseLayoutView",
         "baseItemView" : "/js/app/views/baseItemView",
-        "bootstrap" : "../vendor/bootstrap/bootstrap.min"
+        "bootstrap" : "../vendor/bootstrap/bootstrap.min",
+        "helpers" : "/js/app/libs/helpers",
+        "jquery.validate" : "../vendor/jquery/plugins/validate/jquery.validate"
     },
     hbs: {
         "templateExtension": "hbs",
