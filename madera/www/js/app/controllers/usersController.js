@@ -19,13 +19,14 @@ define(["backbone",
                 var that = this;
 
                 $.ajax({
-                    url: App.API_URL + "login",
+                    url: App.API_URL + "auth/login",
                     dataType: 'json',
                     method: "POST",
                     data: data
                 }).done(function (response) {
                     var token = JSON.stringify(response.token).replace(/"/g, '');
                     localStorage.setItem("token", token);
+                    App.check_session = true;
                     App.views.loginView.trigger("usersController:validLogin");
                 }).fail(function (response) {
                     App.views.loginView.trigger("usersController:errorLogin", response.responseJSON.message);
@@ -33,27 +34,23 @@ define(["backbone",
             },
             checkLogin: function () {
                 var token = localStorage.getItem('token');
-                if(token) {
-                    Backbone.history.navigate("home", {trigger: true});
-                } else {
-                    Backbone.history.navigate("", {trigger: true});
-                }
-                /*if (Backbone.history.fragment !== "") {
+                
+                if (Backbone.history.fragment !== "") {
                     if (token) {
-                        $.ajax('/api/users/check_session').error(function (data) {
+                        if(!App.check_session) {
                             localStorage.removeItem('token');
                             Backbone.history.navigate("", {trigger: true});
-                        });
+                        }
                     } else {
                         Backbone.history.navigate("", {trigger: true});
                     }
                 } else if (token) {
-                    $.ajax('/api/users/check_session').success(function (data) {
+                    if(App.check_session) {
                         Backbone.history.navigate("home", {trigger: true});
-                    }).error(function(data){
+                    } else {
                         localStorage.removeItem('token');
-                    });
-                }*/
+                    }
+                }
             }
         });
 

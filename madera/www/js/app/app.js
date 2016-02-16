@@ -19,6 +19,7 @@ define([
         });
         
         App.API_URL = "http://madera.api-local.dev:31/api/";
+        App.check_session = false;
 
         App.controllers = {};
         App.views = {};
@@ -60,20 +61,15 @@ define([
                 var token = localStorage.getItem('token');
                 
                 if (token) {
-                        if (Backbone.history.fragment === "") {
-                            Backbone.history.navigate("home", {trigger: true});
-                        } else {
-                            localStorage.removeItem('token');
-                            Backbone.history.navigate("", {trigger: true});   
-                        }
-                    /*$.ajax('/api/users/check_session').success(function (data) {
+                    App.check_session = true;
+                    if(App.check_session) {
                         if (Backbone.history.fragment === "") {
                             Backbone.history.navigate("home", {trigger: true});
                         }
-                    }).error(function(data){
+                    } else {
                         localStorage.removeItem('token');
                         Backbone.history.navigate("", {trigger: true});
-                    });*/
+                    }
                 } else {
                     Backbone.history.navigate("", {trigger: true});
                 }

@@ -12,7 +12,8 @@ require.config({
         "baseItemView" : "/js/app/views/baseItemView",
         "bootstrap" : "../vendor/bootstrap/bootstrap.min",
         "helpers" : "/js/app/libs/helpers",
-        "jquery.validate" : "../vendor/jquery/plugins/validate/jquery.validate"
+        "jquery.validate" : "../vendor/jquery/plugins/validate/jquery.validate",
+        "jquery.navgoco" : "../vendor/jquery/plugins/nav/jquery.navgoco"
     },
     hbs: {
         "templateExtension": "hbs",

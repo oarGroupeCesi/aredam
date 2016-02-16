@@ -13,9 +13,9 @@ html {
     font-size: 16px;
 }
 body {
-    background: #26A65B; 
+    background: #DADFE1; 
     color: #41464c;
-    font-family: 'quicksand', sans-serif;
+    font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 100%;
     font-weight: normal;
     height: 100%;
@@ -25,6 +25,15 @@ body {
     width: 100%;
     /**/
     -webkit-font-smoothing: antialiased;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-lg-max {
+    width: 100%;
+    padding: 15px;
 }
 
 /**
@@ -73,15 +82,164 @@ body {
  * NAVBAR
  * -----------------------------------------------------------------------------
  */
-.custom-navbar .navbar-toggle {
-    float: left;
-    margin-left: 15px;
-    margin-right: 0;
-}
-.custom-navbar .navbar-brand img {
+.navbar-brand img,
+.main-menu li a img {
     display: inline-block;
     margin: 0 5px 0 0;
     width: 20px;
+}
+.navbar-brand {
+    margin-left: 130px;
+}
+a.nav-expander {
+    background: none repeat scroll 0 0 transparent;
+    color: #000;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    height: 50px;
+    margin-left: 0;
+    padding: 1em 1.6em 2em;
+    position: absolute;
+    left: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 0;
+    transition: left 0.3s ease-in-out 0s;
+    width: 130px;
+    z-index: 12;
+
+    transition: left 0.3s ease-in-out 0s;
+    -webkit-transition: left 0.3s ease-in-out 0s;
+    -moz-transition: left 0.3s ease-in-out 0s;
+    -o-transition: left 0.3s ease-in-out 0s;
+
+}
+a.nav-expander:hover {
+    cursor: pointer;
+}
+a.nav-expander.fixed {
+    position: fixed;
+}
+.nav-expanded a.nav-expander.fixed {
+    left: 20em;
+}
+nav {
+    background: #1a2229;
+    color: #FFFFFF;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    left: -20em;
+    font-size: 15px;
+    top: 0;
+    width: 20em;
+    z-index: 2000;
+
+    transition: left 0.3s ease-in-out 0s;
+    -webkit-transition: left 0.3s ease-in-out 0s;
+    -moz-transition: left 0.3s ease-in-out 0s;
+    -o-transition: left 0.3s ease-in-out 0s;
+
+}
+.nav-expanded nav {
+    left: 0;
+}
+body.nav-expanded {
+    margin-left: 0em;
+    transition: left 0.4s ease-in-out 0s;
+    -webkit-transition: left 0.4s ease-in-out 0s;
+    -moz-transition: left 0.4s ease-in-out 0s;
+    -o-transition: left 0.4s ease-in-out 0s;
+}
+#nav-close {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    padding-right: 10px;
+    padding-left: 60%;
+}
+#nav-close i {
+    display: inline;
+}
+.main-menu {
+    padding-top: 12px;
+}
+.main-menu li {
+    border-bottom: 1px solid #ECECEC;
+    font-size: 14px;
+    padding: 20px;
+}
+.main-menu>li.active,
+.main-menu>li.active>a {
+    color: #fff;
+    background: #00acac;
+}
+.main-menu li:first-child {
+    line-height: 50px;
+    vertical-align: baseline;
+}
+.main-menu li a {
+    color: #a8acb1;
+    text-decoration: none;
+}
+.main-menu>li:not(:first-child):not(.active):hover,
+.main-menu>li:not(:first-child):not(.active):hover>a {
+    background: #232a2f;
+    color: #a8acb1;
+    text-decoration: none;
+}
+.main-menu li .sub-nav {
+    border-bottom: 0px;
+    padding: 4px;
+}
+.main-menu a .caret {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    vertical-align: top;
+    border-top: 4px solid #4f5963;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+    margin-top: 8px;
+}
+.main-menu a:hover .caret {
+    border-top-color: #4f5963;
+}
+.main-menu li.open > a > .caret {
+    border-top: none;
+    border-bottom: 4px solid #4f5963;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.main-menu li.open > a:hover > .caret {
+    border-bottom-color: #4f5963;
+}
+.icon:before {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+    content: '\f105';
+}
+.main-menu li > a > span.icon {
+    float: right;
+    margin: 0.1em 1.7em -0.1em 0;
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
+}
+.main-menu li > a:hover > span.icon {
+    float: right;
+    margin: 0.1em 0.8em -0.1em 0;
+    opacity: 1;
 }
 
 /**
@@ -171,4 +329,12 @@ body.login header.nav {
 .login #submit-login-form,
 .login #submit-login-form button {
     width: 100%;
+}
+
+/**
+ * MAIN
+ * -----------------------------------------------------------------------------
+ */
+#content-wrapper {
+    margin: 80px 2px 2px 5px;
 }
