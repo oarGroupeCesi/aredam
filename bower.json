@@ -1,0 +1,16 @@
+{
+  "name": "madera",
+  "homepage": "https://github.com/oarGroupeCesi/madera",
+  "authors": [
+    "alexisAvenel <avenel.alexis@sfr.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "cordova": "^3.4.0",
+    "bootstrap": "^3.3.6"
+  }
+}
