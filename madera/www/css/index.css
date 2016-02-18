@@ -18,11 +18,11 @@ body {
     font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 100%;
     font-weight: normal;
-    height: 100%;
+    height: auto;
     letter-spacing: -1px;
     line-height: 1.4;
     overflow-x: hidden;
-    width: 100%;
+    max-width: 100%;
     /**/
     -webkit-font-smoothing: antialiased;
 }
@@ -31,9 +31,36 @@ body {
     text-align: center;
 }
 
+.spacing {
+    display: block;
+    height: 50px;
+    padding: 5px 0;
+}
+
+.spacing-lg {
+    display: block;
+    height: 100px;
+    padding: 10px 0;
+}
+
 .btn-lg-max {
     width: 100%;
     padding: 15px;
+}
+
+.badge {
+    font-weight: 300;
+}
+
+.btn-custom-light {
+    background-color: #98CA37;
+    border-color: #98C94A;
+}
+
+.btn-custom-dark {
+    background-color: #756653;
+    border-color: #584D3F;
+    color: #fff;
 }
 
 /**
@@ -174,7 +201,7 @@ body.nav-expanded {
 .main-menu>li.active,
 .main-menu>li.active>a {
     color: #fff;
-    background: #00acac;
+    background: #98CA37;
 }
 .main-menu li:first-child {
     line-height: 50px;
@@ -337,4 +364,9 @@ body.login header.nav {
  */
 #content-wrapper {
     margin: 80px 2px 2px 5px;
+}
+
+.list-group .list-group-item.active {
+    background-color: #98CA37;
+    border-color: #98CA37;
 }
