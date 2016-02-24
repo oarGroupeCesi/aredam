@@ -1,5 +1,4 @@
 require.config({
-    waitSeconds: 0,
     baseUrl: 'js/app',
     paths: {
         "jquery": "../vendor/jquery/jquery-2.1.4.min",

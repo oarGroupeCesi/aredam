@@ -1,7 +1,7 @@
 define(["backbone",
         "marionette",
         "jquery",
-        "/js/app/views/loginView.js"],
+        "views/loginView"],
     function (Backbone, Marionette, $, LoginView) {
         "use strict";
 
@@ -9,12 +9,14 @@ define(["backbone",
             initialize: function () {
                 this.on('App:usersController:checkLogin', this.checkLogin);
             },
+
             index: function () {
                 App.views.loginView = new LoginView();
                 App.views.loginView.on("loginView:usersController:login", this.login, this);
 
                 App.views.appLayoutView.getRegion('content').show(App.views.loginView);
             },
+
             login: function (data) {
                 var that = this;
 
@@ -32,6 +34,7 @@ define(["backbone",
                     App.views.loginView.trigger("usersController:errorLogin", response.responseJSON.message);
                 });
             },
+
             checkLogin: function () {
                 var token = localStorage.getItem('token');
                 

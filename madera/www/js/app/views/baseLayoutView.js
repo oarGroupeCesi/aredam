@@ -1,4 +1,3 @@
-/*global define, sessionStorage, window, App*/
 define(["marionette",
         "underscore"],
     function (Marionette, _) {

@@ -10,11 +10,22 @@ define(["backbone",
 
             var HomeView = BaseItemView.extend({
                 template: HomeTemplate,
+                
                 events: {
-                    'click .blocBtnCas': 'launchCreateClinicalCaseModal'
+                    'click #create_project': 'navigateToCreateProjectView'
                 },
+
                 initialize: function () {
-                    this.createClinicalCaseModal = null;
+                    var that = this;
+
+                    BaseItemView.prototype.initialize.apply(this, arguments);
+
+                    this.render();
+                },
+
+                navigateToCreateProjectView : function (e) {
+                    e.preventDefault();                    
+                    Backbone.history.navigate('/projects/create/step1', {trigger:true});
                 }
             });
 

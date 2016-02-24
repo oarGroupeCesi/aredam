@@ -4,10 +4,11 @@ define([
     'marionette',
     'controllers/usersController',
     'controllers/pagesController',
+    'controllers/projectsController',
     'views/headerView',
     'views/appLayoutView'
 ], function (Backbone, _, Marionette,
-             UsersController, PagesController,
+             UsersController, PagesController, ProjectsController, 
              HeaderView, AppLayoutView) {
     "use strict";
 
@@ -26,12 +27,12 @@ define([
         
         App.controllers.usersController = new UsersController();
         App.controllers.pagesController = new PagesController();
+        //App.controllers.projectsController = new ProjectsController();
 
         App.views.appLayoutView = new AppLayoutView();
         App.mainRegion.show(App.views.appLayoutView);
         
         App.router = new Marionette.AppRouter();
-        
 
         App.on("start", function() {
             App.views.appLayoutView.getRegion('header').show(new HeaderView());
@@ -51,6 +52,10 @@ define([
                     App.controllers.usersController.trigger('App:usersController:checkLogin');
                 }
             };
+
+            /*App.router.processAppRoutes(App.controllers.projectsController, {
+                "projects/create/step1" : "addProject"
+            });*/
 
             if (Backbone.history) {
                 Backbone.history.start();
