@@ -25,7 +25,7 @@ define(["backbone",
 
                 navigateToCreateProjectView : function (e) {
                     e.preventDefault();                    
-                    Backbone.history.navigate('/projects/create/step1', {trigger:true});
+                    Backbone.history.navigate('/projects/create', {trigger:true});
                 }
             });
 

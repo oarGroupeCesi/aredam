@@ -378,3 +378,12 @@ body.login header.nav {
     background-color: #98CA37;
     border-color: #98CA37;
 }
+
+
+/**
+ * FORM
+ * -----------------------------------------------------------------------------
+ */
+.form-horizontal .control-label {
+    text-align: left;
+}
