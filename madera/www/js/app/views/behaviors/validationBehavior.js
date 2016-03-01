@@ -28,11 +28,19 @@ define(["marionette",
                         errorElement: 'div',
                         errorClass: 'jquery-validate-error',
                         errorPlacement: function (error, element) {
-                            var $p, has_e, is_c;
+                            var $p, 
+                                has_e, 
+                                is_c, 
+                                has_custom_placement,
+                                $customFormErrors = element.parents('.row.form-group').find('.form-errors');
+                            
+                            has_custom_placement = $customFormErrors.length;
                             is_c = element.is('input[type="checkbox"]') || element.is('input[type="radio"]');
                             has_e = element.closest('.input-group').find('.jquery-validate-error').length;
-
-                            if (!is_c || !has_e) {
+                            
+                            if (has_custom_placement) {
+                                return $customFormErrors.append(error);
+                            } else if (!is_c || !has_e) {
                                 if (!has_e) {
                                     element.closest('.input-group').find('.help-block').removeClass('help-block').addClass('help-block-hidden');
                                 }

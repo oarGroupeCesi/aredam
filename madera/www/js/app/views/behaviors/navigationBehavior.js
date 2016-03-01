@@ -11,11 +11,7 @@ define(["marionette",
 
                 initNavigation: function (params) {
                     this.setDefaults();
-                    this.validateForm(params.navId);
-                },
-
-                validateForm: function (navId) {
-                    $(navId).navgoco();
+                    $(params.navId).navgoco();
                 },
 
                 setDefaults : function () {

@@ -1,6 +1,6 @@
 define(["marionette",
         "jquery",
-        "/js/app/views/homeView.js"],
+        "views/homeView"],
     function (Marionette, $, HomeView) {
         "use strict";
 

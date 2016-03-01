@@ -11,6 +11,7 @@ define(["backbone",
         
         var LoginView = BaseItemView.extend({
             template: LoginTemplate,
+
             events: {
                 'submit #login-form' : 'login'
             },

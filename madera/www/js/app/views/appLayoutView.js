@@ -1,4 +1,3 @@
-/*global define, App, Backbone, window*/
 define(["marionette",
         "baseLayoutView",
         "hbs!/js/app/templates/app"],

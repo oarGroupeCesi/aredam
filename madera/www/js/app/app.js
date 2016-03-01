@@ -4,10 +4,11 @@ define([
     'marionette',
     'controllers/usersController',
     'controllers/pagesController',
+    'controllers/projectsController',
     'views/headerView',
     'views/appLayoutView'
 ], function (Backbone, _, Marionette,
-             UsersController, PagesController,
+             UsersController, PagesController, ProjectsController, 
              HeaderView, AppLayoutView) {
     "use strict";
 
@@ -19,6 +20,16 @@ define([
         });
         
         App.API_URL = "http://madera.api-local.dev:31/api/";
+
+        // Cache Backbone.sync for later use
+        var sync = Backbone.sync;
+        Backbone.sync = function(method, model, options){
+            options.beforeSend = function(){
+                this.url = App.API_URL + this.url;
+            };
+            return sync.call(this, method, model, options);
+        };
+
         App.check_session = false;
 
         App.controllers = {};
@@ -26,12 +37,12 @@ define([
         
         App.controllers.usersController = new UsersController();
         App.controllers.pagesController = new PagesController();
+        App.controllers.projectsController = new ProjectsController();
 
         App.views.appLayoutView = new AppLayoutView();
         App.mainRegion.show(App.views.appLayoutView);
         
         App.router = new Marionette.AppRouter();
-        
 
         App.on("start", function() {
             App.views.appLayoutView.getRegion('header').show(new HeaderView());
@@ -51,6 +62,11 @@ define([
                     App.controllers.usersController.trigger('App:usersController:checkLogin');
                 }
             };
+
+            App.router.processAppRoutes(App.controllers.projectsController, {
+                "projects/create" : "addProject",
+                "projects/edit/:projectId/products/add/step1" : "addProductsToProject"
+            });
 
             if (Backbone.history) {
                 Backbone.history.start();
@@ -79,17 +95,22 @@ define([
         });
 
         App.on('ajax:setTokenHeaders', function() {
-            $.ajaxSetup({
-                beforeSend: function (xhr)
-                {
-                    var token = localStorage.getItem('token');
-                    if (token) {
-                        xhr.setRequestHeader("Content-Type", "application/json");
-                        xhr.setRequestHeader("Accept", "application/json");
-                        xhr.setRequestHeader("Authorization", "Bearer " + token);
+            var token = localStorage.getItem('token');
+            if (token) {
+                $.ajaxSetup({
+                    // Enables cross domain requests
+                    crossDomain: true,
+                    // Helps in setting cookie
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    headers: {
+                        "Content-Type" : "application/json",
+                        "Accept" : "application/json",
+                        "Authorization" : "Bearer " + token
                     }
-                }
-            });
+                });
+            }
         });
 
         App.start();

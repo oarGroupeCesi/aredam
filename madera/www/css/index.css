@@ -57,10 +57,18 @@ body {
     border-color: #98C94A;
 }
 
-.btn-custom-dark {
-    background-color: #756653;
-    border-color: #584D3F;
+.btn-custom-dark, 
+.btn-custom-dark:hover, 
+.btn-custom-dark:focus {
+    background-color: #1A2229;
+    border-color: #000;
     color: #fff;
+}
+
+.input-group-lg>.form-control, 
+.input-group-lg>.input-group-addon, 
+.input-group-lg>.input-group-btn>.btn {
+    border-radius: 2px;
 }
 
 /**
@@ -369,4 +377,13 @@ body.login header.nav {
 .list-group .list-group-item.active {
     background-color: #98CA37;
     border-color: #98CA37;
+}
+
+
+/**
+ * FORM
+ * -----------------------------------------------------------------------------
+ */
+.form-horizontal .control-label {
+    text-align: left;
 }
