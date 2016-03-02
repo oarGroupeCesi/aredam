@@ -13,7 +13,8 @@ require.config({
         "bootstrap" : "/js/vendor/bootstrap/bootstrap.min",
         "helpers" : "/js/app/libs/helpers",
         "jquery.validate" : "/js/vendor/jquery/plugins/validate/jquery.validate",
-        "jquery.navgoco" : "/js/vendor/jquery/plugins/nav/jquery.navgoco"
+        "jquery.navgoco" : "/js/vendor/jquery/plugins/nav/jquery.navgoco",
+        "moment" : "/js/vendor/momentjs/moment"
     },
     hbs: {
         "templateExtension": "hbs",

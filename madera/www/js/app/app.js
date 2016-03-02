@@ -2,12 +2,13 @@ define([
     'backbone',
     'underscore',
     'marionette',
+    'moment',
     'controllers/usersController',
     'controllers/pagesController',
     'controllers/projectsController',
     'views/headerView',
     'views/appLayoutView'
-], function (Backbone, _, Marionette,
+], function (Backbone, _, Marionette, Moment, 
              UsersController, PagesController, ProjectsController, 
              HeaderView, AppLayoutView) {
     "use strict";
@@ -44,6 +45,8 @@ define([
         
         App.router = new Marionette.AppRouter();
 
+        Moment.locale('fr');
+
         App.on("start", function() {
             App.views.appLayoutView.getRegion('header').show(new HeaderView());
             
@@ -65,7 +68,7 @@ define([
 
             App.router.processAppRoutes(App.controllers.projectsController, {
                 "projects/create" : "addProject",
-                "projects/edit/:projectId/products/add/step1" : "addProductsToProject"
+                "projects/edit/:projectId/step1/products/add" : "addProductsToProject"
             });
 
             if (Backbone.history) {

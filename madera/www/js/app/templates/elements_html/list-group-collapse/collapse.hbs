@@ -1,0 +1,28 @@
+<div id="{{data.id}}" class="panel-group" role="tablist">
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="rangeCollapseHeading">
+			<h4 class="panel-title">
+				<a class="collapsed" role="button" data-toggle="collapse" href="#collapseRange_{{data.options.id}}" aria-expanded="false" aria-controls="collapseRange_{{data.options.id}}">
+					{{data.options.name}}
+				</a>
+			</h4>
+		</div>
+		<div id="collapseRange_{{data.options.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rangeCollapseHeading" aria-expanded="false">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<label for="exterior_finish">Finition extérieure : </label>
+					<select id="exterior_finish" name="exterior_finish" class="form-control">
+						<option value="wood" {{#xif " this.data.options.exterior_finish == 'wood' "}}selected{{/xif}}>Bois</option>
+						<option value="roughcast" {{#xif " this.data.options.exterior_finish == 'roughcast' "}}selected{{/xif}}>Crépi</option>
+					</select>
+				</li>
+				<li class="list-group-item">
+					Isolant : {{data.options.insulating}}
+				</li>
+				<li class="list-group-item">Couverture : {{data.options.top}}</li>
+				<li class="list-group-item">Configuration : {{data.options.configuration}}</li>
+			</ul>
+			<div class="panel-footer">Créée le {{formated_date data.options.created_at}}</div>
+		</div>
+	</div>
+</div>

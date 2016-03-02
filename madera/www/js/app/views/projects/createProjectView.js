@@ -1,13 +1,13 @@
 define(["backbone",
-    "backbone.radio",
-    "marionette",
-    "jquery",
-    "underscore",
-    "baseItemView",
-    "views/behaviors/validationBehavior",
-    "models/project",
-    "models/customer",
-    "hbs!/js/app/templates/projects/createProjectForm"],
+        "backbone.radio",
+        "marionette",
+        "jquery",
+        "underscore",
+        "baseItemView",
+        "views/behaviors/validationBehavior",
+        "models/project",
+        "models/customer",
+        "hbs!/js/app/templates/projects/createProjectForm"],
         function (Backbone, Radio, Marionette, $, _,  
                   BaseItemView, 
                   ValidationBehavior, 
@@ -77,7 +77,7 @@ define(["backbone",
                 },
 
                 handleProjectSave : function (e) {
-                    $("#message").addClass("hide").find('.alert').empty();
+                    $("#message").find('.alert').addClass("hide").empty();
                     
                     e.preventDefault();
                     
@@ -111,7 +111,7 @@ define(["backbone",
                                 .request('saveProject', dataProject)
                                 .then(function(projectModel){
                                     that.model = new ProjectModel(projectModel);
-                                    Backbone.history.navigate("projects/edit/" + that.model.id + "/products/add/step1", {trigger:true});
+                                    Backbone.history.navigate("projects/edit/" + that.model.id + "/step1/products/add", {trigger:true});
                                 });
                         },
                         function(response){
