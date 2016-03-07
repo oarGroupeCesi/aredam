@@ -1,0 +1,50 @@
+<div id="panel-{{data.uniqueId}}" class="panel-group" role="tablist">
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="rangeCollapseHeading_{{data.uniqueId}}">
+			<div class="panel-title">
+				<div class="input-group">
+					<a class="collapsed input-group-addon toggleArrow" id="arrow_{{data.uniqueId}}" role="button" data-toggle="collapse" href="#collapseRange_{{data.uniqueId}}" aria-expanded="false" aria-controls="collapseRange_{{data.uniqueId}}">
+						<i class="fa fa-arrow-down fa-lg black"></i>
+					</a>
+					<input type="text" class="form-control theTooltip" name="product_name" id="product_name" value="{{data.options.name}}" aria-describedby="arrow_{{data.uniqueId}}" data-toggle="tooltip" data-placement="top" title="Modifiez le nom du produit si nécessaire"/>
+				</div>
+			</div>
+		</div>
+		<div id="collapseRange_{{data.uniqueId}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rangeCollapseHeading_{{data.uniqueId}}" aria-expanded="false">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<label for="exterior_finish">Finition extérieure : </label>
+					<select id="exterior_finish" name="exterior_finish" class="form-control">
+						<option value="wood" {{#xif " this.data.options.exterior_finish == 'wood' "}}selected{{/xif}}>Bois</option>
+						<option value="roughcast" {{#xif " this.data.options.exterior_finish == 'roughcast' "}}selected{{/xif}}>Crépi</option>
+					</select>
+				</li>
+				<li class="list-group-item">
+					<label for="insulating">Isolant : </label>
+					<select id="insulating" name="insulating" class="form-control">
+						<option value="synthetic" {{#xif " this.data.options.insulating == 'synthetic' "}}selected{{/xif}}>Synthétique</option>
+						<option value="natural" {{#xif " this.data.options.insulating == 'natural' "}}selected{{/xif}}>Naturel</option>
+						<option value="biological" {{#xif " this.data.options.insulating == 'biological' "}}selected{{/xif}}>Biologique</option>
+					</select>
+				</li>
+				<li class="list-group-item">
+					<label for="top">Couverture : </label>
+					<select id="top" name="top" class="form-control">
+						<option value="roof tiles" {{#xif " this.data.options.top == 'roof tiles' "}}selected{{/xif}}>Tuiles</option>
+						<option value="slates" {{#xif " this.data.options.top == 'slates' "}}selected{{/xif}}>Ardoise</option>
+						<option value="thatch" {{#xif " this.data.options.top == 'thatch' "}}selected{{/xif}}>Chaume</option>
+					</select>
+				</li>
+				<li class="list-group-item">
+					<label for="configuration">Configuration : </label>
+					<select id="configuration" name="configuration" class="form-control">
+						<option value="Without angle" {{#xif " this.data.options.configuration == 'Without angle' "}}selected{{/xif}}>Sans angle</option>
+						<option value="With closing angle" {{#xif " this.data.options.configuration == 'With closing angle' "}}selected{{/xif}}>Avec angle sortant</option>
+						<option value="With opening angle" {{#xif " this.data.options.configuration == 'With opening angle' "}}selected{{/xif}}>Avec angle entrant</option>
+					</select>
+				</li>
+			</ul>
+			<div class="panel-footer">Créée le {{formated_date data.options.created_at}}</div>
+		</div>
+	</div>
+</div>
