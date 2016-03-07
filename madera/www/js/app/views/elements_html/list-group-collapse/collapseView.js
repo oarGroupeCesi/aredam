@@ -8,7 +8,6 @@ define(["marionette",
         "use strict";
 
         var SelectItemView = BaseItemView.extend({
-            id : _.uniqueId('collapse_'),
             
             template: CollapseTemplate,
             
@@ -22,6 +21,7 @@ define(["marionette",
                 
                 this.data.options = params.options.toJSON();
                 this.data.id = params.collapseId || false;
+                this.data.uniqueId = params.uniqueId;
                 
                 this.render();
             }

@@ -68,7 +68,8 @@ define([
 
             App.router.processAppRoutes(App.controllers.projectsController, {
                 "projects/create" : "addProject",
-                "projects/edit/:projectId/step1/products/add" : "addProductsToProject"
+                "projects/edit/:projectId/step1/products/add" : "addProductsToProject",
+                "projects/edit/:projectId/step2/modules/add" : "addModulesToProject"
             });
 
             if (Backbone.history) {

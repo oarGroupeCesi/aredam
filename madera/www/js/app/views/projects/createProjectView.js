@@ -115,7 +115,7 @@ define(["backbone",
                                 });
                         },
                         function(response){
-                            $form.find('.alert').text('error : ' + response).removeClass('hide');
+                            $form.find('.alert').text('Erreur : ' + response.responseJSON).removeClass('hide');
                             $form.find('input, textarea, button, select').attr('disabled', false);
                         });
                 }

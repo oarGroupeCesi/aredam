@@ -14,7 +14,8 @@ require.config({
         "helpers" : "/js/app/libs/helpers",
         "jquery.validate" : "/js/vendor/jquery/plugins/validate/jquery.validate",
         "jquery.navgoco" : "/js/vendor/jquery/plugins/nav/jquery.navgoco",
-        "moment" : "/js/vendor/momentjs/moment"
+        "moment" : "/js/vendor/momentjs/moment",
+        "tooltip" : "/js/vendor/bootstrap/tooltip/tooltip"
     },
     hbs: {
         "templateExtension": "hbs",

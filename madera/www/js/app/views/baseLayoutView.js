@@ -5,7 +5,7 @@ define(["marionette",
 
         var BaseLayoutView = Marionette.LayoutView.extend({
             initialize : function() {
-              this.data = {};  
+              this.data = {};
             },
 
             show: function () {

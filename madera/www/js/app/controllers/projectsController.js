@@ -30,7 +30,6 @@ define(["backbone",
                 App.views.appLayoutView.setBodyClass(['headerEdition', 'creationProduits']);
             
                 this.projectId = projectId;
-                this.productId = null;
 
                 this.initProject({
                     step : "step2"
@@ -69,21 +68,21 @@ define(["backbone",
                         }
                         
                         case 'step2' : {
+                            var that = this;
 
-
-                            
                             this.rangeChannel = Radio.channel('Ranges');
                             this.rangeChannel
                                 .request('getRanges')
                                 .then(function (rangesCollection){
-                                    this.rangesCollection = new RangesCollection(rangesCollection);
+                                    that.rangesCollection = new RangesCollection(rangesCollection);
                                     
                                     App.views.headerProjectView = new HeaderProjectView({
                                         'title' : 'Etape 2 : Conception de produit(s)'
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectHeader').show(App.views.headerProjectView);
                                     App.views.stepView = new CreateProductView({
-                                        'templateRanges' : this.rangesCollection.getTemplateRanges()
+                                        'projectId' : that.projectId,
+                                        'templateRanges' : that.rangesCollection.getTemplateRanges()
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
                                     App.views.footerProjectView = new FooterProjectView({
