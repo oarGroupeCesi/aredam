@@ -13,7 +13,17 @@ html {
     font-size: 16px;
 }
 body {
-    background: #DADFE1; 
+    /*background: #DADFE1;*/
+    background: -webkit-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* IE10 */
+    background: -o-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Opera 11.10+ */
+    background: linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* W3C */
     color: #41464c;
     font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 100%;
@@ -151,6 +161,9 @@ body {
  * NAVBAR
  * -----------------------------------------------------------------------------
  */
+.custom-navbar li {
+    cursor: pointer;
+} 
 .navbar-brand img,
 .main-menu li a img {
     display: inline-block;
@@ -321,16 +334,7 @@ body.login header.nav {
 .login {
     width: 100px;
     height: 100px;
-    background: -webkit-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* Chrome 10+, Saf5.1+ */
-    background: -moz-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* FF3.6+ */
-    background: -ms-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* IE10 */
-    background: -o-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* Opera 11.10+ */
-    background: linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* W3C */
+    background: url('../images/bg-madera.jpg') no-repeat center;
 }
 .login .middlePage {
     position: absolute;

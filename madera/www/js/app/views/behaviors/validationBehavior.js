@@ -26,7 +26,7 @@ define(["marionette",
                             return $(element).closest('.input-group').removeClass('has-error').find('.help-block-hidden').removeClass('help-block-hidden').addClass('help-block');
                         },
                         errorElement: 'div',
-                        errorClass: 'jquery-validate-error',
+                        errorClass: 'jquery-validate-error text-danger',
                         errorPlacement: function (error, element) {
                             var $p, 
                                 has_e, 

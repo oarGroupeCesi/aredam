@@ -1,0 +1,45 @@
+<div id="module-{{data.uniqueId}}" class="input-module-group">
+
+	<div class="row form-group">
+		<div class="col-sm-5">
+			<label for="name">Nom du module (optionnel)</label>
+		</div>
+		<div class="input-group col-sm-7">
+			<input type="text" name="name" id="name" class="form-control">
+		</div>
+		<div class="form-errors"></div>
+	</div>
+
+	{{#xif " this.data.options.id != '5' "}}
+	<div class="row form-group">
+		<div class="col-sm-5">
+			<label for="height">Hauteur (M)</label>
+		</div>
+		<div class="input-group col-sm-7">
+			<input type="number" name="height" id="height" class="form-control">
+		</div>
+		<div class="form-errors"></div>
+	</div>
+	{{/xif}}
+
+	<div class="row form-group">
+		<div class="col-sm-5">
+			<label for="width">Longueur (M)</label>
+		</div>
+		<div class="input-group col-sm-7">
+			<input type="number" name="width" id="width" class="form-control">
+		</div>
+		<div class="form-errors"></div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-sm-5">
+			<label for="quantity">Quantité d'usage ({{data.options.unity}})</label>
+		</div>
+		<div class="input-group col-sm-7">
+			<input type="number" name="quantity" id="quantity" class="form-control">
+		</div>
+		<div class="form-errors"></div>
+	</div>
+
+</div>
