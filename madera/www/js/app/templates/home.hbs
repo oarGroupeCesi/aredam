@@ -33,11 +33,33 @@
 			<div class="row">
 				<div class="col-xs-6 col-xs-offset-3">
 					<div class="list-group">
-						<a href="#" class="list-group-item active text-center">Mes derniers devis</a>
-						<a href="#" class="list-group-item"><span class="badge">En cours</span> Devis n°7 : Maison M.PATE</a>
-						<a href="#" class="list-group-item"><span class="badge">Accepté</span> Devis n°6 : Lotissement Agence ECHO</a>
-						<a href="#" class="list-group-item"><span class="badge">Brouillon</span> Devis n°5 : Cabane Mme ROGER</a>
-						<a href="#" class="list-group-item"><span class="badge">Refusé</span> Devis n°4 : Maison double M.ETROPI</a>
+						<a class="list-group-item active text-center">Mes derniers devis</a>
+						{{#each data.projects}}
+						<a href="#projects/{{id}}" class="list-group-item">
+							{{#xif " this.status == 'draft' "}}
+								<span class="badge badge-warning">Brouillon</span>
+							{{else}}
+								{{#xif " this.status == 'accepted' "}}
+									<span class="badge badge-success">Accepté</span>
+								{{else}}
+									{{#xif " this.status == 'pending' "}}
+										<span class="badge badge-primary">En cours</span>
+									{{else}}
+										{{#xif " this.status == 'refused' "}}
+											<span class="badge badge-danger">Refusé</span>
+										{{else}}
+											{{#xif " this.status == 'command' "}}
+												<span class="badge badge-default">Commandé</span>
+											{{else}}
+												<span class="badge badge-info">Facturé</span>
+											{{/xif}}
+										{{/xif}}
+									{{/xif}}
+								{{/xif}}
+							{{/xif}}
+							Devis n°{{id}} : {{name}}
+						</a>
+						{{/each}}
 					</div>
 				</div>
 			</div>

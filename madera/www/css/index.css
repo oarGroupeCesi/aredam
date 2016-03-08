@@ -27,10 +27,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.text-center {
-    text-align: center;
-}
-
 .spacing {
     display: block;
     height: 50px;
@@ -48,8 +44,8 @@ body {
     padding: 15px;
 }
 
-.badge {
-    font-weight: 300;
+.btn {
+    transition: all 0.5s ease-in-out;
 }
 
 .btn-custom-light {
@@ -57,18 +53,56 @@ body {
     border-color: #98C94A;
 }
 
-.btn-custom-dark, 
-.btn-custom-dark:hover, 
-.btn-custom-dark:focus {
+.btn-custom-dark {
     background-color: #1A2229;
     border-color: #000;
     color: #fff;
+}
+
+.btn-custom-dark:hover, 
+.btn-custom-dark:focus {
+    color: #fff;
+    background-color: #1C1C25;
 }
 
 .input-group-lg>.form-control, 
 .input-group-lg>.input-group-addon, 
 .input-group-lg>.input-group-btn>.btn {
     border-radius: 2px;
+}
+
+.badge {
+    font-weight: 300;
+}
+
+.badge.badge-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.badge.badge-danger {
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.badge.badge-success {
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.badge.badge-primary {
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.badge.badge-info {
+    color: #fff;
+    background-color: #5bc0de;
+}
+
+.badge.badge-default {
+    color: #333;
+    background-color: #fff;
 }
 
 /**

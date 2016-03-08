@@ -3,8 +3,9 @@ define(["backbone",
         "jquery",
         "underscore",
         "baseItemView",
+        "collections/projects",
         "hbs!/js/app/templates/home"],
-        function (Backbone, Marionette, $, _, BaseItemView, HomeTemplate) {
+        function (Backbone, Marionette, $, _, BaseItemView, ProjectsCollection, HomeTemplate) {
 
             "use strict";
 
@@ -15,12 +16,18 @@ define(["backbone",
                     'click #create_project': 'navigateToCreateProjectView'
                 },
 
-                initialize: function () {
+                initialize: function (params) {
                     var that = this;
 
                     BaseItemView.prototype.initialize.apply(this, arguments);
 
+                    this.projects = (params.projects) ? params.projects : {};
+
                     this.render();
+                },
+
+                onBeforeRender : function () {
+                    this.data.projects = this.projects.toJSON();
                 },
 
                 navigateToCreateProjectView : function (e) {
