@@ -26,6 +26,15 @@ define(["backbone",
                 });
             },
 
+            viewProject : function (projectId) {
+                App.views.appLayoutView.setBodyClass(['headerEdition', 'vueProjet']);
+            
+                this.projectId = projectId;
+
+                App.views.viewProjectView = new ViewProjectView();
+                App.views.appLayoutView.getRegion('content').show(App.views.viewProjectView);
+            },
+
             addProductsToProject : function (projectId) {
                 App.views.appLayoutView.setBodyClass(['headerEdition', 'creationProduits']);
             
@@ -33,6 +42,16 @@ define(["backbone",
 
                 this.initProject({
                     step : "step2"
+                });
+            },
+
+            addModulesToProject : function (projectId) {
+                App.views.appLayoutView.setBodyClass(['headerEdition', 'creationModules']);
+            
+                this.projectId = projectId;
+
+                this.initProject({
+                    step : "step3"
                 });
             },
 
@@ -92,8 +111,6 @@ define(["backbone",
 
                                 });
 
-
-                            
                             break;
                         }
 
