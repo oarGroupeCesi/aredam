@@ -86,6 +86,7 @@ define(["backbone",
                     
                     e.preventDefault();
 
+
                     var that = this,
                         $form = $(e.currentTarget),
                         datas = {
@@ -93,48 +94,50 @@ define(["backbone",
                             'dataRange' : []
                         };
 
-                    $('#products .product-contain').each(function(index, divProduct) {
+                    if ($form.valid()) {
 
-                        datas.dataProduct[index] = {
-                            'name' : $(divProduct).find("input[name='product_name']").val(),
-                            'project_id' : parseInt(that.projectId)
-                        };
+                        $('#products .product-contain').each(function(index, divProduct) {
 
-                        datas.dataRange[index] = {
-                            'name' : $(divProduct).find("input[name='product_name']").val(),
-                            'exterior_finish' : $(divProduct).find("select[name='exterior_finish']").val(),
-                            'insulating' : $(divProduct).find("select[name='insulating']").val(),
-                            'top' : $(divProduct).find("select[name='top']").val(),
-                            'configuration' : $(divProduct).find("select[name='configuration']").val(),
-                            'template' : 0
-                        };
+                            datas.dataProduct[index] = {
+                                'name' : $(divProduct).find("input[name='product_name']").val(),
+                                'project_id' : parseInt(that.projectId)
+                            };
 
-                    });
-                    
-                    $form.find('input, textarea, button, select').attr('disabled', 'disabled');
-                    
-                    $.each(datas.dataRange, function(i, dataRange){                        
-                        that.rangeChannel
-                            .request('saveRange', dataRange)
-                            .then(function(rangeModel){
-                                that.rangeModel = new RangeModel(rangeModel);
-                                datas.dataProduct[i].range_id = parseInt(that.rangeModel.get('id'));
+                            datas.dataRange[index] = {
+                                'name' : $(divProduct).find("input[name='product_name']").val(),
+                                'exterior_finish' : $(divProduct).find("select[name='exterior_finish']").val(),
+                                'insulating' : $(divProduct).find("select[name='insulating']").val(),
+                                'top' : $(divProduct).find("select[name='top']").val(),
+                                'configuration' : $(divProduct).find("select[name='configuration']").val(),
+                                'template' : 0
+                            };
 
-                                that.channel
-                                    .request('saveProduct', datas.dataProduct[i])
-                                    .then(function(productModel){
-                                        that.productModel = new ProductModel(productModel);
-                                        Backbone.history.navigate("projects/edit/" + that.model.id + "/step2/modules/add", {trigger:true});
-                                    },
-                                    function(response){
-                                        that.showErrorMessage($form, 'Erreur : ' + response.responseJSON);
-                                    });
-                            },
-                            function(response){
-                                that.showErrorMessage($form, 'Erreur : ' + response.responseJSON);
-                            });
-                    });
-                    
+                        });
+                        
+                        $form.find('input, textarea, button, select').attr('disabled', 'disabled');
+                        
+                        $.each(datas.dataRange, function(i, dataRange){                        
+                            that.rangeChannel
+                                .request('saveRange', dataRange)
+                                .then(function(rangeModel){
+                                    that.rangeModel = new RangeModel(rangeModel);
+                                    datas.dataProduct[i].range_id = parseInt(that.rangeModel.get('id'));
+
+                                    that.channel
+                                        .request('saveProduct', datas.dataProduct[i])
+                                        .then(function(productModel){
+                                            that.productModel = new ProductModel(productModel);
+                                            Backbone.history.navigate("projects/edit/" + that.model.id + "/step2/modules/add", {trigger:true});
+                                        },
+                                        function(response){
+                                            that.showErrorMessage($form, 'Erreur : ' + response.responseJSON);
+                                        });
+                                },
+                                function(response){
+                                    that.showErrorMessage($form, 'Erreur : ' + response.responseJSON);
+                                });
+                        });
+                    }
                 },
 
                 addAnotherProduct : function (e) {
@@ -206,6 +209,8 @@ define(["backbone",
                         $(this).removeClass('alert-success hide')
                         $(this).html(response);
                     });
+
+                    this.enableForm($form);
                 },
 
                 hideMessage : function(e) {

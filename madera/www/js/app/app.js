@@ -70,7 +70,8 @@ define([
                 "projects/create" : "addProject",
                 "projects/:projectId" : "viewProject",
                 "projects/edit/:projectId/step1/products/add" : "addProductsToProject",
-                "projects/edit/:projectId/step2/modules/add" : "addModulesToProject"
+                "projects/edit/:projectId/step2/modules/add" : "addModulesToProject",
+                "projects/edit/:projectId/step3/preview" : "previewCustomerProject"
             });
 
             if (Backbone.history) {

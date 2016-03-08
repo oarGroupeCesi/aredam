@@ -1,0 +1,90 @@
+<form id="CreateModuleForm" class="form-horizontal">
+
+    <div class="form-group" id="message">
+        <div class="col-sm-6 col-sm-offset-4 ">
+            <div class="col-sm-12 alert hide"></div>
+        </div>
+    </div>
+	
+	<div class="row">
+
+		<div id="modules" class="col-sm-12">
+			<div class="module-contain col-sm-12">
+				<div class="row">
+				    <div class="col-sm-2">
+				    	<p class="module-label">Module n°<span class="number">1</span></p>
+				    </div>
+				    <div class="col-sm-12">
+				    	<div class="row form-group">
+					        <label for="modulenature_id" class="col-sm-3 control-label">Choix d'un type de module</label>
+					        <div class="col-sm-9">
+					             <div class="input-group col-sm-12">
+					                <select name="modulenature_id" class="form-control moduleNature">
+										<option selected disabled>Sélectionner un type de module</option>
+										{{#each this.data.modulesNatures}}
+										<option value="{{id}}">{{name}}</option>
+										{{/each}}
+									</select>
+					            </div>
+					        </div>
+					        <div class="form-errors"></div>
+				    	</div>
+				    </div>
+				    <div class="col-sm-10 col-sm-offset-1">
+				    	<div class="form-group">
+							<div class="moduleInfos"></div>
+				    	</div>
+				    </div>				
+				</div>
+			</div>
+		</div>
+
+		<div id="footerForm" class="col-sm-4 col-sm-offset-4">
+			<div class="form-group center-block">
+				<button type="button" id="addAnotherModule" class="btn btn-default">Ajouter un autre module</button>
+				<button type="submit" id="saveModules" class="btn btn-primary">Enregistrer</button>
+			</div>
+		</div>
+	</div>
+
+</form>
+
+<div class="hidden">
+	<div id="modules-hidden" class="col-sm-12">
+		<div class="module-contain col-sm-12">
+			<div class="row">
+			    <div class="col-sm-12">
+			    	<div class="row">
+			    		<div class="col-sm-6 text-left">
+			    			<p class="module-label">Module n°<span class="number"></span></p>
+			    		</div>
+			    		<div class="col-sm-6 text-right">
+			    			<a href="#" class="deleteModule text-danger" data-toggle="tooltip" data-placement="right" title="Supprimer le module"><i class="fa fa-trash"></i></a>
+			    		</div>
+			    	</div>
+			    </div>
+			    <div class="col-sm-12">
+			    	<div class="row form-group">
+				        <label for="modulenature_id" class="col-sm-3 control-label">Choix d'un type de module</label>
+				        <div class="col-sm-9">
+				             <div class="input-group col-sm-12">
+				                <select name="modulenature_id" class="form-control moduleNature">
+									<option selected disabled>Sélectionner un type de module</option>
+									{{#each this.data.modulesNatures}}
+									<option value="{{id}}">{{name}}</option>
+									{{/each}}
+								</select>
+				            </div>
+				        </div>
+				        <div class="form-errors"></div>
+			    	</div>
+			    </div>
+			    <div class="col-sm-10 col-sm-offset-1">
+			    	<div class="form-group">
+						<div class="moduleInfos"></div>
+			    	</div>
+			    </div>				
+			</div>
+		</div>
+	</div>	
+</div>
