@@ -13,6 +13,7 @@ define(["marionette",
                 this.channel = Radio.channel('Products');
                 
                 this.channel.reply('getProducts', this.getProducts);
+                this.channel.reply('getProduct', this.getProduct);
                 this.channel.reply('saveProduct', this.saveProduct);
             },
 
@@ -22,6 +23,16 @@ define(["marionette",
                 App.trigger('ajax:setTokenHeaders');
 
                 return products.fetch();
+            },
+
+            getProduct : function (projectId) {
+                var products = new ProductsCollection();
+                
+                App.trigger('ajax:setTokenHeaders');
+
+                return products.fetch({
+                    'project_id' : projectId
+                });
             },
 
             saveProduct : function (data) {
