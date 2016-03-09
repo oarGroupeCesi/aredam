@@ -11,7 +11,10 @@ define(["backbone"],
                 "modulenature_id" : null,
                 "project_id" : null
             },
-            urlRoot: "module"
+            urlRoot: "module",
+            toJSON : function () {
+                return JSON.parse(JSON.stringify(this.attributes));
+            }
         });
 
         return Module;

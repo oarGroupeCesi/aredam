@@ -13,6 +13,7 @@ define(["marionette",
                 this.channel = Radio.channel('Modules');
                 
                 this.channel.reply('getModules', this.getModules);
+                this.channel.reply('getModule', this.getModule);
                 this.channel.reply('saveModule', this.saveModule);
             },
 
@@ -22,6 +23,16 @@ define(["marionette",
                 App.trigger('ajax:setTokenHeaders');
 
                 return modules.fetch();
+            },
+
+            getModule : function (projectId) {
+                var modules = new ModulesCollection();
+                
+                App.trigger('ajax:setTokenHeaders');
+
+                return modules.fetch({
+                    'project_id' : projectId
+                });
             },
 
             saveModule : function (data) {

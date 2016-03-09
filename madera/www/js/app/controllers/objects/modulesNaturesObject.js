@@ -12,6 +12,17 @@ define(["marionette",
                 this.channel = Radio.channel('ModulesNatures');
                 
                 this.channel.reply('getModulesNatures', this.getModulesNatures);
+                this.channel.reply('getModuleNature', this.getModuleNature);
+            },
+
+            getModuleNature : function (moduleNatureId) {
+                var modulesNatures = new ModulesNaturesCollection();
+                
+                App.trigger('ajax:setTokenHeaders');
+
+                return modulesNatures.fetch({
+                    id : moduleNatureId
+                });
             },
 
             getModulesNatures : function () {

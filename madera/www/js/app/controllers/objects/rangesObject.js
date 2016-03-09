@@ -13,6 +13,7 @@ define(["marionette",
                 this.channel = Radio.channel('Ranges');
                 
                 this.channel.reply('getRanges', this.getRanges);
+                this.channel.reply('getRange', this.getRange);
                 this.channel.reply('saveRange', this.saveRange);
             },
 
@@ -22,6 +23,16 @@ define(["marionette",
                 App.trigger('ajax:setTokenHeaders');
 
                 return ranges.fetch();
+            },
+
+            getRange : function (rangeId) {
+                var ranges = new RangesCollection();
+                
+                App.trigger('ajax:setTokenHeaders');
+
+                return ranges.fetch({
+                    'id' : rangeId
+                });
             },
 
             saveRange : function (data) {

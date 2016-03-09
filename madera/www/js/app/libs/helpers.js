@@ -8,7 +8,7 @@ define(["moment"],
                 return expression.replace(/(\-([a-z]))/gi, function(){return "_"+arguments[2].toLowerCase();});
             },
             formated_date : function (expression) {
-                return Moment(expression).utcOffset(expression).format("L");
+                return Moment(expression).format("DD/MM/YYYY");
             }
         };
 

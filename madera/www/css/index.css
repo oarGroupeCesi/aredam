@@ -13,28 +13,21 @@ html {
     font-size: 16px;
 }
 body {
-    /*background: #DADFE1;*/
-    background: -webkit-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* Chrome 10+, Saf5.1+ */
-    background: -moz-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* FF3.6+ */
-    background: -ms-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* IE10 */
-    background: -o-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* Opera 11.10+ */
-    background: linear-gradient(90deg, #16A085 10%, #26A65B 90%);
-    /* W3C */
+    background: #DADFE1;
     color: #41464c;
     font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 100%;
     font-weight: normal;
     height: auto;
-    letter-spacing: -1px;
     line-height: 1.4;
     overflow-x: hidden;
     max-width: 100%;
     /**/
     -webkit-font-smoothing: antialiased;
+}
+
+p.bg-info {
+    padding: 15px;
 }
 
 .spacing {
@@ -59,8 +52,14 @@ body {
 }
 
 .btn-custom-light {
-    background-color: #98CA37;
-    border-color: #98C94A;
+    background-color: #00B16A;
+    border-color: #03A678;
+}
+
+.btn-custom-light:hover, 
+.btn-custom-light:focus {
+    color: #fff;
+    background-color: #03A678;
 }
 
 .btn-custom-dark {
@@ -163,7 +162,19 @@ body {
  */
 .custom-navbar li {
     cursor: pointer;
-} 
+}
+.navbar-default {
+    background: -webkit-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* IE10 */
+    background: -o-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Opera 11.10+ */
+    background: linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* W3C */
+}
 .navbar-brand img,
 .main-menu li a img {
     display: inline-block;
@@ -172,6 +183,12 @@ body {
 }
 .navbar-brand {
     margin-left: 130px;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #1C1C25;
+}
+.navbar-default .navbar-brand {
+    color: #000;
 }
 a.nav-expander {
     background: none repeat scroll 0 0 transparent;
@@ -256,7 +273,16 @@ body.nav-expanded {
 .main-menu>li.active,
 .main-menu>li.active>a {
     color: #fff;
-    background: #98CA37;
+    background: -webkit-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* IE10 */
+    background: -o-linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* Opera 11.10+ */
+    background: linear-gradient(90deg, #16A085 10%, #26A65B 90%);
+    /* W3C */
 }
 .main-menu li:first-child {
     line-height: 50px;
@@ -413,8 +439,8 @@ body.login header.nav {
 }
 
 .list-group .list-group-item.active {
-    background-color: #98CA37;
-    border-color: #98CA37;
+    background-color: #00B16A;
+    border-color: #03A678;
 }
 
 .product-contain {

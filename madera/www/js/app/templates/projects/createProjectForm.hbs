@@ -19,77 +19,108 @@
 	    	</div>
 	    </div>
 
-	    <div class="col-sm-6">
+	    <div class="col-sm-10 col-sm-offset-2">
 	    	<div class="row form-group">
-		        <label for="firstname" class="col-sm-4 control-label">Prénom du client</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="text" class="form-control" name="firstname" id="firstname">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+				<label class="radio-inline">
+					<input type="radio" name="customer_choice" id="newCustomer" value="newCustomer" checked> Créer un nouveau client
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="customer_choice" id="oldCustomer" value="oldCustomer" {{#xif " !this.data.customers.length "}}disabled{{/xif}}> Associer le projet à un client existant
+				</label>
+	        </div>
+    	</div>
 
-	    <div class="col-sm-6">
-	    	<div class="row form-group">
-		        <label for="lastname" class="col-sm-4 control-label">Nom du client</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="text" class="form-control" name="lastname" id="lastname">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+		<div id="newCustomerForm">
+		    <div class="col-sm-6">
+		    	<div class="row form-group">
+			        <label for="firstname" class="col-sm-4 control-label">Prénom du client</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="text" class="form-control" name="firstname" id="firstname">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>
 
-	    <div class="col-sm-12">
-	    	<div class="row form-group">
-		        <label for="email" class="col-sm-2 control-label">Email du client</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="email" class="form-control" name="email" id="email">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+		    <div class="col-sm-6">
+		    	<div class="row form-group">
+			        <label for="lastname" class="col-sm-4 control-label">Nom du client</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="text" class="form-control" name="lastname" id="lastname">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>
 
-	    <div class="col-sm-12">
-	    	<div class="row form-group">
-		        <label for="adr_street" class="col-sm-2 control-label">Adresse</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="text" class="form-control" name="adr_street" id="adr_street">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+		    <div class="col-sm-12">
+		    	<div class="row form-group">
+			        <label for="email" class="col-sm-2 control-label">Email du client</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="email" class="form-control" name="email" id="email">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>
 
-	    <div class="col-sm-6">
-	    	<div class="row form-group">
-		        <label for="adr_zipcode" class="col-sm-4 control-label">Code postal</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="number" class="form-control" name="adr_zipcode" id="adr_zipcode">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+		    <div class="col-sm-12">
+		    	<div class="row form-group">
+			        <label for="adr_street" class="col-sm-2 control-label">Adresse</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="text" class="form-control" name="adr_street" id="adr_street">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>
 
-	    <div class="col-sm-6">
-	    	<div class="row form-group">
-		        <label for="adr_city" class="col-sm-4 control-label">Ville</label>
-		        <div class="col-sm-8">
-		             <div class="input-group col-sm-12">
-		                <input type="text" class="form-control" name="adr_city" id="adr_city">
-		            </div>
-		            <div class="form-errors"></div>
-		        </div>
-	    	</div>
-	    </div>
+		    <div class="col-sm-6">
+		    	<div class="row form-group">
+			        <label for="adr_zipcode" class="col-sm-4 control-label">Code postal</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="number" class="form-control" name="adr_zipcode" id="adr_zipcode">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>
+
+		    <div class="col-sm-6">
+		    	<div class="row form-group">
+			        <label for="adr_city" class="col-sm-4 control-label">Ville</label>
+			        <div class="col-sm-8">
+			             <div class="input-group col-sm-12">
+			                <input type="text" class="form-control" name="adr_city" id="adr_city">
+			            </div>
+			            <div class="form-errors"></div>
+			        </div>
+		    	</div>
+		    </div>			
+		</div>
+
+		<div id="oldCustomerForm" class="hidden">
+		    <div class="col-sm-12">
+		    	<div class="form-group">
+			        <label for="customer_id" class="col-sm-2 control-label">Choix du client</label>
+			        <div class="col-sm-10">
+			             <div class="input-group col-sm-12">
+			                <select name="customer_id" id="customer_id" class="form-control">
+								<option selected disabled>Sélectionner un client</option>
+								{{#each this.data.customers}}
+								<option value="{{id}}">{{firstname}} {{lastname}} ({{adr_zipcode}})</option>
+								{{/each}}
+							</select>
+			            </div>
+			        </div>
+		    	</div>
+		    </div>
+		</div>
 
 		<div class="col-sm-4 col-sm-offset-4">
 			<div class="form-group">

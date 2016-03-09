@@ -5,7 +5,8 @@ define(["backbone"],
         var ModuleNature = Backbone.Model.extend({
             defaults : {
                 "name" : null,
-                "unity" : null
+                "unity" : null,
+                "price" : null
             },
             urlRoot: "modulenature"
         });

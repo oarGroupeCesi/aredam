@@ -2,8 +2,14 @@ define(["backbone",
         "backbone.radio",
         "marionette",
         "jquery",
+        "models/range",
+        "models/project",
         "collections/ranges",
+        "collections/modules",
         "collections/modulesNatures",
+        "collections/customers",
+        "collections/products",
+        "collections/projects",
         "controllers/objects/projectsObject",
         "controllers/objects/customersObject",
         "controllers/objects/productsObject",
@@ -14,11 +20,14 @@ define(["backbone",
         "views/projects/createProjectView",
         "views/projects/headerProjectView",
         "views/projects/footerProjectView",
+        "views/projects/previewProjectView",
         "views/products/createProductView",
         "views/modules/createModuleView"],
-    function (Backbone, Radio, Marionette, $, RangesCollection, ModulesNaturesCollection, 
+    function (Backbone, Radio, Marionette, $, 
+            RangeModel, ProjectModel, 
+            RangesCollection, ModulesCollection, ModulesNaturesCollection, CustomersCollection, ProductsCollection, ProjectsCollection, 
             ProjectsObject, CustomersObject, ProductsObject, RangesObject, ModulesObject, ModulesNaturesObject, 
-            ProjectWrapperLayoutView, CreateProjectView, HeaderProjectView, FooterProjectView, CreateProductView, CreateModuleView) {
+            ProjectWrapperLayoutView, CreateProjectView, HeaderProjectView, FooterProjectView, PreviewProjectView, CreateProductView, CreateModuleView) {
         "use strict";
 
         var ProjectsController = Marionette.Controller.extend({
@@ -89,17 +98,27 @@ define(["backbone",
                 if (options.step) {
                     switch(options.step) {
                         case 'step1' : {
+                            var that = this;
 
-                            App.views.headerProjectView = new HeaderProjectView({
-                                'title' : 'Etape 1 : Identification du projet'
-                            });
-                            App.views.projectWrapperLayoutView.getRegion('projectHeader').show(App.views.headerProjectView);
-                            App.views.stepView = new CreateProjectView();                            
-                            App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
-                            App.views.footerProjectView = new FooterProjectView({
-                                'content' : 'Footer du projet : projet'
-                            });
-                            App.views.projectWrapperLayoutView.getRegion('projectFooter').show(App.views.footerProjectView);
+                            this.customerChannel = Radio.channel('Customers');
+                            this.customerChannel
+                                .request('getCustomers')
+                                .then(function (customersCollection){
+                                    that.customersCollection = new CustomersCollection(customersCollection);
+
+                                    App.views.headerProjectView = new HeaderProjectView({
+                                        'title' : 'Etape 1 : Identification du projet'
+                                    });
+                                    App.views.projectWrapperLayoutView.getRegion('projectHeader').show(App.views.headerProjectView);
+                                    App.views.stepView = new CreateProjectView({
+                                        'customers' : that.customersCollection
+                                    });                            
+                                    App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
+                                    App.views.footerProjectView = new FooterProjectView({
+                                        'content' : ''
+                                    });
+                                    App.views.projectWrapperLayoutView.getRegion('projectFooter').show(App.views.footerProjectView);
+                                });
                             
                             break;
                         }
@@ -123,7 +142,7 @@ define(["backbone",
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
                                     App.views.footerProjectView = new FooterProjectView({
-                                        'content' : 'Footer du projet : produits'
+                                        'content' : ''
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectFooter').show(App.views.footerProjectView);
 
@@ -151,7 +170,7 @@ define(["backbone",
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
                                     App.views.footerProjectView = new FooterProjectView({
-                                        'content' : 'Footer du projet : modules'
+                                        'content' : ''
                                     });
                                     App.views.projectWrapperLayoutView.getRegion('projectFooter').show(App.views.footerProjectView);
 
@@ -162,6 +181,54 @@ define(["backbone",
 
                         case 'step4' : {
                             var that = this;
+
+                            this.modulesNaturesChannel = Radio.channel('ModulesNatures');
+                            this.modulesChannel = Radio.channel('Modules');
+                            this.productsChannel = Radio.channel('Products');
+                            this.rangeChannel = Radio.channel('Ranges');
+                            this.projectChannel = Radio.channel('Projects');
+
+
+                            $.when( that.modulesChannel.request('getModule', that.projectId), 
+                                    that.productsChannel.request('getProduct', that.projectId))
+                                .then(function(modulesCollection, productsCollection) {
+
+                                    that.modulesCollection = new ModulesCollection(modulesCollection[0]);
+                                    that.productsCollection = new ProductsCollection(productsCollection[0]);
+                                    that.productModel = that.productsCollection.first();
+
+                                    $.when( that.rangeChannel.request('getRanges'), 
+                                            that.modulesNaturesChannel.request('getModulesNatures'),
+                                            that.projectChannel.request('getProjects'))
+                                        .then(function(rangeCollection, modulesNaturesCollection, projectsCollection) {
+
+                                            that.rangeCollection = new RangesCollection(rangeCollection[0]);
+                                            that.projectsCollection = new ProjectsCollection(projectsCollection[0]);
+                                            that.rangeModel = that.rangeCollection.findWhere({id: that.productModel.get('range_id')});
+                                            that.projectModel = that.projectsCollection.findWhere({id: parseInt(that.projectId)});
+                                            that.modulesNaturesCollection = new ModulesNaturesCollection(modulesNaturesCollection[0]);
+                                            that.modulesCollection.each(function(module) {
+                                                module.set('moduleNature', that.modulesNaturesCollection.findWhere({id: module.get('modulenature_id')}));
+                                            });
+
+                                            App.views.headerProjectView = new HeaderProjectView({
+                                                'title' : 'Aperçu du devis final'
+                                            });
+                                            App.views.projectWrapperLayoutView.getRegion('projectHeader').show(App.views.headerProjectView);
+                                            App.views.stepView = new PreviewProjectView({
+                                                'project' : that.projectModel,
+                                                'projectId' : that.projectId,
+                                                'modules' : that.modulesCollection,
+                                                'products' : that.productsCollection,
+                                                'range' : that.rangeModel
+                                            });
+                                            App.views.projectWrapperLayoutView.getRegion('projectContent').show(App.views.stepView);
+                                            App.views.footerProjectView = new FooterProjectView({
+                                                'content' : ''
+                                            });
+                                            App.views.projectWrapperLayoutView.getRegion('projectFooter').show(App.views.footerProjectView);
+                                        });
+                                });
 
 
                             break;
